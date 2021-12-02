@@ -1,0 +1,9 @@
+USE SPMG;
+GO
+
+SELECT COUNT(idMedico)
+FROM MEDICO
+WHERE idEspecialidade = 17
+GO
+
+ALTER PROCEDURE 

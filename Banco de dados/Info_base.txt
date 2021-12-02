@@ -1,0 +1,57 @@
+
+-TIPOUSUARIO
+ idTipoUsuario (PK)
+ qualUsuario
+
+-USUARIO 
+ idUsuario (PK)
+ idTipoUsuario (FK)
+ email
+ nome
+ senha
+
+-CLINICA
+ idClinica (PK)
+ endereçoClinica
+ telefoneClinica
+ horarioFuncionamento
+ nomeClinica
+ cnpj
+
+-PACIENTE
+ idPaciente (PK)
+ idUsuario (FK)
+ telefone
+ dataNascimento
+ cpf 
+ rg
+ endereco
+
+-MEDICO
+ idMedico (PK)
+ idEspacialidade (FK)
+ idClinica (FK)
+ idUsuario (FK)
+ crm 
+
+-SITUACAO
+ idSituacao (PK)
+ descricaoSitiuacao(agendado,aguardando,cancelado)
+ 
+-CONSULTA 
+ idConsulta (PK)
+ idClinica (FK)
+ idMedico (FK)
+ idSituacao (FK)
+ idPaciente (FK)
+ dataConsulta
+ 
+ 
+-ESPECIALIDADE
+ idEspecialidade (PK)
+ especiMedica
+ 
+
+  
+ 
+ 

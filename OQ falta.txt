@@ -1,0 +1,9 @@
+-Fisico banco
+-documetação
+-back-end
+cadastar consultas 
+separam função de adm,medico,paciente
+-front-end 
+tudo
+-ux-ui
+baixa fidelidade web

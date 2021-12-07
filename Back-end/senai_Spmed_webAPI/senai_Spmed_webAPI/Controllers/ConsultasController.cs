@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai_Spmed_webAPI.Domains;
 using senai_Spmed_webAPI.Interfaces;
@@ -20,6 +21,8 @@ namespace senai_Spmed_webAPI.Controllers
         /// </summary>
         private IConsultaRepository _consultaRepository { get; set; }
 
+
+
         /// <summary>
         /// Instancia o objeto para que haja referência às implementações feitas no repositório
         /// </summary>
@@ -28,6 +31,13 @@ namespace senai_Spmed_webAPI.Controllers
             _consultaRepository = new ConsultaRepository();
         }
 
+        [Authorize(Roles = "ADM")]
+        [HttpPost]
+        public IActionResult Cadastrar(Consulta obj)
+        {
+            ConsultaRepository.Cadastrar(Consulta );
+            return StatusCode(201);
+        }
         /// <summary>
         /// Lista todas as Consultas existentes
         /// </summary>

@@ -17,8 +17,8 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      senha: '',
+      email: 'medico@email.com',
+      senha: 'C54321',
     };
   }
   //como vamos trabalhar com assync historage,
@@ -87,11 +87,14 @@ export default class Login extends Component {
             onChangeText={senha => this.setState({ senha })}
           />
 
+
           <TouchableOpacity
             style={styles.btnLogin}
             onPress={this.realizarLogin}>
             <Text style={styles.Entrar}>ENTRAR</Text>
           </TouchableOpacity>
+
+
         </View>
 
 
@@ -101,8 +104,8 @@ export default class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-  Corpoimg:{
-    alignItems:'center'
+  Corpoimg: {
+    alignItems: 'center'
   },
 
   ImgLogin: {
@@ -124,8 +127,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 
-  CorpoEmail:{
+  CorpoEmail: {
     alignItems: 'center',
+    marginTop: 45,
   },
 
   inputEmail: {
@@ -145,6 +149,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: '#009DF5',
     borderWidth: 3,
+    marginTop: 20,
   },
 
   btnLogin: {
@@ -152,7 +157,14 @@ const styles = StyleSheet.create({
     width: 180,
     borderRadius: 20,
     backgroundColor: '#537BE2',
-    marginTop: 50,
+    marginTop: 60,
     alignItems: 'center',
-  }
+  },
+
+  Entrar: {
+    color: 'white',
+    marginTop: 13,
+  },
+
+
 });

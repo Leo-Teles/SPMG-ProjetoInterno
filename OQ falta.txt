@@ -7,3 +7,9 @@ separam função de adm,medico,paciente
 tudo
 -ux-ui
 baixa fidelidade web
+
+usuario where email
+medicos where idusuario
+consultas where idmedico == id
+
+https://trello.com/b/XNGLbC8K/spmg

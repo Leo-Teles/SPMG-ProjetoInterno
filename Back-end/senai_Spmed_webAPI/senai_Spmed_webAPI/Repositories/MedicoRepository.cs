@@ -47,6 +47,8 @@ namespace senai_Spmed_webAPI.Repositories
             return ctx.Medicos.Include(u => u.IdUsuarioNavigation).Include(c => c.IdClinicaNavigation).Include(e => e.IdEspecialidadeNavigation).FirstOrDefault(m => m.IdMedico == idMedico);
         }
 
+       
+
         public void Cadastrar(Medico novoMedico)
         {
             ctx.Medicos.Add(novoMedico);

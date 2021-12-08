@@ -44,8 +44,8 @@ namespace senai_Spmed_webAPI.Controllers
         [HttpGet("med/{email}")]
         public IActionResult LerMed(string email)
         {
-            Repositories.MedicoRepository m = new Repositories.MedicoRepository();
-            return Ok(_Repository.ListarPorMed(m.BuscarPorEmail(email).IdMedico));
+            MedicoRepository m = new MedicoRepository();
+            return Ok(m.Listar(m.BuscarPorEmail(email).IdMedico));
         }
 
         [HttpGet]

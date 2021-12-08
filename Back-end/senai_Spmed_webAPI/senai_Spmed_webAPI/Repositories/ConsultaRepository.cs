@@ -49,6 +49,11 @@ namespace senai_Spmed_webAPI.Repositories
             }
         }
 
+        internal static object ListarMinnhas()
+        {
+            throw new NotImplementedException();
+        }
+
         public Consulta BuscarPorId(int idConsulta)
         {
             return ctx.Consulta

@@ -23,25 +23,31 @@ namespace senai_Spmed_webAPI.Controllers
 
 
 
-        /// <summary>
-        /// Instancia o objeto para que haja referência às implementações feitas no repositório
-        /// </summary>
+        
         public ConsultasController()
         {
             _consultaRepository = new ConsultaRepository();
         }
 
+
+
         [Authorize(Roles = "ADM")]
-        [HttpPost]
-        public IActionResult Cadastrar(Consulta obj)
+        [HttpGet]
+        public IActionResult LerTudo()
         {
-            ConsultaRepository.Cadastrar(Consulta );
-            return StatusCode(201);
+            return Ok(ConsultaRepository.ListarMinnhas());
         }
-        /// <summary>
-        /// Lista todas as Consultas existentes
-        /// </summary>
-        /// <returns>Uma lista de consultas com o status code 200 - Ok</returns>
+
+
+
+        [Authorize(Roles = "MED")]
+        [HttpGet("med/{email}")]
+        public IActionResult LerMed(string email)
+        {
+            Repositories.MedicoRepository m = new Repositories.MedicoRepository();
+            return Ok(_Repository.ListarPorMed(m.BuscarPorEmail(email).IdMedico));
+        }
+
         [HttpGet]
         public IActionResult Listar()
         {

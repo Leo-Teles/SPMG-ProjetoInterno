@@ -59,6 +59,11 @@ margin-left: 650px;
     margin-left: 57px;
     margin-top: 57px;
 }
+.OutrosPerfis{
+    display: flex;
+    margin-left: 57px;
+    margin-top: 35px;
+}
 .PerfilHr{
     width: 432px;
     margin-left: 57px;

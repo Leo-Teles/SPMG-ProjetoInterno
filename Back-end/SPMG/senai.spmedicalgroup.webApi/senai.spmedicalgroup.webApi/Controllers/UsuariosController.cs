@@ -52,7 +52,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
 
         
         [Authorize(Roles = "ADM")]
-        [HttpPut()]
+        [HttpPut]
         public IActionResult Atualizar(Domains.Usuario obj)
         {
             _Repository.Atualizar(obj);

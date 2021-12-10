@@ -68,7 +68,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
 
         
         [Authorize(Roles = "MED")]
-        [HttpPut()]
+        [HttpPut]
         public IActionResult AtualizarDescricao(Consultum obj)
         {
             _Repository.Atualizar(obj.IdConsulta, obj);

@@ -24,7 +24,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
             _Repository = new Repositories.UsuarioRepository();
         }
 
-        
+        [HttpPost]
         public IActionResult Login(LoginViewModel login)
         {
             try

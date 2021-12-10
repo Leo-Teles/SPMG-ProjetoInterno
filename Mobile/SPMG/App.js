@@ -34,7 +34,7 @@
              headerShown: false,
            }}>
            <AuthStack.Screen name="Login" component={Login} />
-           {/* <AuthStack.Screen name="ConsultaPaciente" component={ConsultaPaciente}/> */}
+           <AuthStack.Screen name="ConsultaPaciente" component={ConsultaPaciente}/>
            {/* <AuthStack.Screen name="ConsultaMedico" component={ConsultaMedico} /> */}
          </AuthStack.Navigator>
        </NavigationContainer>

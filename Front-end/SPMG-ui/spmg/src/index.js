@@ -4,26 +4,23 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import './index.css';
 
-import Home from './pages/home/App';
+import Home from './pages/Home/App';
 
-import ConsultaAdm from './pages/consultaadm/ConsultaAdm'
+import consultaAdm from './pages/ConsultaAdm/consultaAdm'
 import reportWebVitals from './reportWebVitals';
 
 
 
 const routing = (
-<Router>
-  <div>
-    <Switch>
-      <Route exact path = "/"  componet={Home}/>
-      <Route  path ="/consultaadm"  componet ={ConsultaAdm}             />
-    </Switch>
-  </div>
-</Router>
-
-
-
-) 
+  <Router>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/ConsultaAdm" component={consultaAdm} />
+      </Switch>
+    </div>
+  </Router>
+)
 
 ReactDOM.render(
   routing,

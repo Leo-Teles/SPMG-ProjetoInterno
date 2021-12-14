@@ -1,17 +1,14 @@
+import { Component } from 'react';
 import './App.css';
 import imgLogo from '../assec/Logoicon.ico'
+import { Link } from 'react-router-dom';
 
-class Home extends Component {
+export default class Home extends Component {
 
-  redirecionarPara = (path) => {
-    this.props.history.push(path.target.name)
-  }
-
-  efetuarLogout = () => {
-    localStorage.removeItem('usuario-login')
+efetuarLogout = () => {
     this.props.history.push('/login')
-  }
-
+}
+  
 
   render() {
     return (
@@ -24,13 +21,13 @@ class Home extends Component {
             <div>
               <h1 class="tituloSP"> SP Medical Group </h1>
             </div>
-            <nav class="menuHeader">
-              <a class="Cdc" href="#">QUEM SOMOS </a>
+            <nav id="links" class="menuHeader">
+              <a class="Cdc" href="#blocoVisao">QUEM SOMOS </a>
               <a class="Cdc" href="#">CONTATOS</a>
               <a class="Cdc" href="#"> SPMG</a>
+              <Link class="BotãoLogin" to="login">LOGIN</Link>
             </nav>
-            <button class="BotãoLogin"> Login </button>
-
+            
           </div>
         </header>
 
@@ -44,7 +41,7 @@ class Home extends Component {
             </div>
           </section>
 
-          <section class="blocoVisao">
+          <section id="QUEM SOMOS" class="blocoVisao">
 
             <div class="tituloVisao">
               <h1 class="visao">Visão</h1>
@@ -65,6 +62,6 @@ class Home extends Component {
   }
 }
 
-export default App;
+
 
 

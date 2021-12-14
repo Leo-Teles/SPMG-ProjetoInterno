@@ -1,34 +1,41 @@
 import { Component } from 'react'
+import '../Login/login.css'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
-class Login extends Component {
+import imgMedicos from '../assec/imgMedicos.png'
+import LogoSPMG from '../assec/LogoSPMG.png'
+
+
+
+export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
             senha: '',
+            erroMensagem: '',
+            isLoading: false
         };
     };
-
-
-
-
 
     render() {
         return (
             <div>
+
                 <main>
                     <section class="todosBlocos">
 
                         <div class="bloco1">
                             <div>
-                                {/* <img class="ImagemMedicos" src="../Fotos/national-cancer-institute-701-FJcjLAQ-unsplash 1.png"> */}
+                                <img class="imgMedicos" src={imgMedicos} />
                             </div>
                         </div>
 
                         <div class="bloco2">
                             <div>
-                                {/* <img class= "IMGLogo" src="../Fotos/logo_spmedgroup_v2 1.png"> */}
+                                <img class="IMGLogo" src={LogoSPMG} />
                             </div>
 
                             <div>
@@ -49,9 +56,7 @@ class Login extends Component {
                             </div>
 
                             <div>
-                                <button class="BotaoLogin">
-                                    Login
-                                </button>
+                                <Link to="login">Login</Link>
                             </div>
                         </div>
 

@@ -1,16 +1,25 @@
 import './App.css';
 import imgLogo from '../assec/Logoicon.ico'
 
+class Home extends Component {
+
+  redirecionarPara = (path) => {
+    this.props.history.push(path.target.name)
+  }
+
+  efetuarLogout = () => {
+    localStorage.removeItem('usuario-login')
+    this.props.history.push('/login')
+  }
 
 
-
-function App() {
-  return (
-    <div className="App">
-      <header class="">
-        <div class="conteinerHeader">
-          <div>
-            <img class="imgLogo"  src={imgLogo} alt="LogoSPMG"/>
+  render() {
+    return (
+      <div className="App">
+        <header class="">
+          <div class="conteinerHeader">
+            <div>
+              <img class="imgLogo" src={imgLogo} alt="LogoSPMG" />
             </div>
             <div>
               <h1 class="tituloSP"> SP Medical Group </h1>
@@ -23,7 +32,7 @@ function App() {
             <button class="BotãoLogin"> Login </button>
 
           </div>
-    </header>
+        </header>
 
         <main>
           <section class="apresentação">
@@ -51,10 +60,11 @@ function App() {
           </section>
 
         </main>
-    </div>
-      );
+      </div>
+    );
+  }
 }
 
-      export default App;
+export default App;
 
 

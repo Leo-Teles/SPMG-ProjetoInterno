@@ -4,12 +4,11 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import './index.css';
 
-import Home from './pages/Home/App';
+import Home from './pages/home/App';
+import consultaAdm from './pages/ConsultaAdm/consultaAdm';
+import Login from './pages/login/Login';
 
-import consultaAdm from './pages/ConsultaAdm/consultaAdm'
 import reportWebVitals from './reportWebVitals';
-
-
 
 const routing = (
   <Router>
@@ -17,6 +16,8 @@ const routing = (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/ConsultaAdm" component={consultaAdm} />
+        <Route path="login" component={Login}/>
+        
       </Switch>
     </div>
   </Router>
@@ -27,7 +28,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

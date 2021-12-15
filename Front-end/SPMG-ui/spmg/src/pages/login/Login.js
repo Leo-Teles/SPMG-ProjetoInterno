@@ -1,7 +1,9 @@
 import { Component } from 'react'
-import '../Login/login.css'
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import '../login/login.css'
+import axios from 'axios'
+// import { Link } from 'react-router-dom';
+
+
 
 
 import imgMedicos from '../assec/imgMedicos.png'
@@ -15,10 +17,16 @@ export default class Login extends Component {
         this.state = {
             email: '',
             senha: '',
-            erroMensagem: '',
-            isLoading: false
+           
         };
     };
+
+  efetuaLogin = (event) =>{
+      event.preventDefault();
+
+      axios.post()
+  }
+
 
     render() {
         return (
@@ -38,26 +46,34 @@ export default class Login extends Component {
                                 <img class="IMGLogo" src={LogoSPMG} />
                             </div>
 
-                            <div>
-                                <h1 class="NomeLogin">Nome</h1>
-                                <input class="InputNome" type="text" />
-                                <hr class="HrNome" />
-                            </div>
+                            <form onSubmit={this.efetuaLogin}>
 
-                            <div>
-                                <h1 class="SenhaLogin">Senha</h1>
-                                <input class="InputSenha" type="text" />
-                                <hr class="HrSenha" />
-                            </div>
+                                <input class="InputNome"
+                                    type="text"
+                                    name="email"
+                                    value={this.stade.email}
+                                    onChange={this.atualizaStateCampo}
+                                    placeholder='Username'
+                                />
 
-                            <div>
 
-                                <button class="EsqueceuSenha"> Esqueceu a senha? </button>
-                            </div>
+                                <input class="InputNome"
+                                    type="password"
+                                    name="senha"
+                                    value={this.stade.senha}
+                                    onChange={this.atualizaStateCampo}
+                                    placeholder='password'
+                                />
 
-                            <div>
-                                <Link to="login">Login</Link>
-                            </div>
+                                {/* <div>
+
+                                    <button class="EsqueceuSenha"> Esqueceu a senha? </button>
+                                </div> */}
+
+                                <button type='submit'>
+                                    Login
+                                </button>
+                            </form>
                         </div>
 
                     </section>

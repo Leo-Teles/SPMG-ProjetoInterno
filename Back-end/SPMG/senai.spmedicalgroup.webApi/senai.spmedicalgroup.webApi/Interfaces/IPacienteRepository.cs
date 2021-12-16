@@ -10,10 +10,6 @@ namespace senai.spmedicalgroup.webApi.Interfaces
     {
         
         List<Paciente> ListarTodos();
-
-       
-        Paciente BuscarPorEmail(string email);
-
         
         Paciente BuscarPorId(int id);
 

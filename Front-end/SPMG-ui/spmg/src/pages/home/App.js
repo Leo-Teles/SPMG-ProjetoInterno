@@ -23,9 +23,9 @@ efetuarLogout = () => {
             </div>
             <nav id="links" class="menuHeader">
               <a class="Cdc" href="#blocoVisao">QUEM SOMOS </a>
-              <a class="Cdc" href="#">CONTATOS</a>
-              <a class="Cdc" href="#"> SPMG</a>
-              <Link class="BotãoLogin" to="login">LOGIN</Link>
+              {/* <a class="Cdc" href="#">CONTATOS</a>
+              <a class="Cdc" href="#"> SPMG</a> */}
+              <Link class="BotãoLogin" to="/login">LOGIN</Link>
             </nav>
             
           </div>
@@ -41,7 +41,7 @@ efetuarLogout = () => {
             </div>
           </section>
 
-          <section id="QUEM SOMOS" class="blocoVisao">
+          <section id="blocoVisao">
 
             <div class="tituloVisao">
               <h1 class="visao">Visão</h1>

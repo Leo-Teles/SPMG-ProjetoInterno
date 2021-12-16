@@ -5,15 +5,15 @@ using System.Collections.Generic;
 
 namespace senai.spmedicalgroup.webApi.Domains
 {
-    public partial class TipoUsuario
+    public partial class Tipousuario
     {
-        public TipoUsuario()
+        public Tipousuario()
         {
             Usuarios = new HashSet<Usuario>();
         }
 
-        public string Sigla { get; set; }
-        public string TipoUsuario1 { get; set; }
+        public byte IdTipoUsuario { get; set; }
+        public string QualUsuario { get; set; }
 
         public virtual ICollection<Usuario> Usuarios { get; set; }
     }

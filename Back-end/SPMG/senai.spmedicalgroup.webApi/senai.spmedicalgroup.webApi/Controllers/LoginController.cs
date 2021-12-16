@@ -29,7 +29,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
         {
             try
             {
-                Domains.Usuario usuarioBuscado = _Repository.Logar(login.email, login.senha);
+                Usuario usuarioBuscado = _Repository.Logar(login.email, login.senha);
         
                 if (usuarioBuscado == null)
                 {
@@ -39,8 +39,8 @@ namespace senai.spmedicalgroup.webApi.Controllers
                 var minhasClaims = new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
-                    new Claim(ClaimTypes.Role, usuarioBuscado.TipoUsuario.ToString()),
-                    new Claim("role", usuarioBuscado.TipoUsuario.ToString())
+                    new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString()),
+                    new Claim("role", usuarioBuscado.IdTipoUsuario.ToString())
                 };
 
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("spmg-chave-autenticacao"));

@@ -1,4 +1,4 @@
-﻿using senai.spmedicalgroup.webApi.Contexts;
+﻿using senai.spmedicalgroup.webApi.Context;
 using senai.spmedicalgroup.webApi.Domains;
 using senai.spmedicalgroup.webApi.Interfaces;
 using System;
@@ -10,30 +10,25 @@ namespace senai.spmedicalgroup.webApi.Repositories
 {
     public class PacienteRepository : IPacienteRepository
     {
-        SpMedGroupContext ctx = new SpMedGroupContext();
+        SPMGContext ctx = new SPMGContext();
 
         public void Atualizar(int id, Paciente objAtualizado)
         {
             Paciente objBuscado = ctx.Pacientes.FirstOrDefault(u => u.IdPaciente == id);
 
-            if (objBuscado.Nome != null)
+            if (objBuscado.IdPaciente > 0)
             {
-                objBuscado.Email = objAtualizado.Email;
-                objBuscado.Nome = objAtualizado.Nome;
-                objBuscado.DataNasc = objAtualizado.DataNasc;
-                objBuscado.Tel = objAtualizado.Tel;
-                objBuscado.Rg = objAtualizado.Rg;
+                objBuscado.IdUsuario = objAtualizado.IdUsuario;
+                objBuscado.IdPaciente = objAtualizado.IdPaciente;
+                objBuscado.DataNascimento = objAtualizado.DataNascimento;
+                objBuscado.Telefone = objAtualizado.Telefone;
+
                 objBuscado.Cpf = objAtualizado.Cpf;
                 objBuscado.Endereco = objAtualizado.Endereco;
             }
 
             ctx.Pacientes.Update(objBuscado);
             ctx.SaveChanges();
-        }
-
-        public Paciente BuscarPorEmail(string email)
-        {
-            return ctx.Pacientes.FirstOrDefault(u => u.Email == email);
         }
 
         public Paciente BuscarPorId(int id)

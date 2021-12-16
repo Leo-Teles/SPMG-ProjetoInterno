@@ -12,8 +12,8 @@ namespace senai.spmedicalgroup.webApi.Domains
             Medicos = new HashSet<Medico>();
         }
 
-        public short IdEspecialidade { get; set; }
-        public string NomeEspecialidade { get; set; }
+        public byte IdEspecialidade { get; set; }
+        public string EspeciaMedica { get; set; }
 
         public virtual ICollection<Medico> Medicos { get; set; }
     }

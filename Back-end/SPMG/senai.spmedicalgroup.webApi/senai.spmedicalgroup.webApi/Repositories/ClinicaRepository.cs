@@ -1,4 +1,5 @@
-﻿using senai.spmedicalgroup.webApi.Contexts;
+﻿
+using senai.spmedicalgroup.webApi.Context;
 using senai.spmedicalgroup.webApi.Domains;
 using senai.spmedicalgroup.webApi.Interfaces;
 using System;
@@ -10,7 +11,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
 {
     public class ClinicaRepository : IClinicaRepository
     {
-        SpMedGroupContext ctx = new SpMedGroupContext();
+        SPMGContext ctx = new SPMGContext();
 
         public void Atualizar(int id, Clinica objAtualizado)
         {
@@ -18,11 +19,10 @@ namespace senai.spmedicalgroup.webApi.Repositories
 
             if (objBuscado.NomeClinica != null)
             {
-                objBuscado.NomeClinica  = objAtualizado.NomeClinica; 
-                objBuscado.RazaoSocial  = objAtualizado.RazaoSocial; 
+                objBuscado.NomeClinica  = objAtualizado.NomeClinica;
                 objBuscado.Cnpj         = objAtualizado.Cnpj;        
-                objBuscado.Endereco     = objAtualizado.Endereco;
-                objBuscado.HorarioFecha = objAtualizado.HorarioFecha;
+                objBuscado.EnderecoClinica     = objAtualizado.EnderecoClinica;
+                objBuscado.HorarioFuncionamento = objAtualizado.HorarioFuncionamento;
             }
 
             ctx.Clinicas.Update(objBuscado);

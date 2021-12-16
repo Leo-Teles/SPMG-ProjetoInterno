@@ -30,25 +30,6 @@ namespace senai.spmedicalgroup.webApi.Controllers
         {
             return Ok(_Repository.ListarTodos());
         }
-
-       
-        [Authorize(Roles = "MED")]
-        [HttpGet("med/{email}")]
-        public IActionResult LerMed(string email)
-        {
-            Repositories.MedicoRepository m = new Repositories.MedicoRepository();
-            return Ok(_Repository.ListarPorMed(m.BuscarPorEmail(email).IdMedico));
-        }
-
-        
-        [Authorize(Roles = "PAC")]
-        [HttpGet("pac/{email}")]
-        public IActionResult LerPac(string email)
-        {
-            Repositories.PacienteRepository p = new Repositories.PacienteRepository();
-            return Ok(_Repository.ListarPorPac(p.BuscarPorEmail(email).IdPaciente));
-        }
-
         
         [Authorize(Roles = "ADM,MED")]
         [HttpGet("{id}")]

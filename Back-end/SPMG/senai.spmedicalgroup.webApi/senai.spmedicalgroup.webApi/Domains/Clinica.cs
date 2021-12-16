@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -10,29 +11,34 @@ namespace senai.spmedicalgroup.webApi.Domains
     {
         public Clinica()
         {
+            Consulta = new HashSet<Consultum>();
             Medicos = new HashSet<Medico>();
         }
 
-        public int IdClinica { get; set; }
+        public byte IdClinica { get; set; }
 
         [Required(ErrorMessage = "O nome da clínica é obrigatório.")]
+        public string EnderecoClinica { get; set; }
+
+        [Required(ErrorMessage = "O nome da clínica é obrigatório.")]
+        public string TelefoneClinica { get; set; }
+        [Required(ErrorMessage = "O nome da clínica é obrigatório.")]
+
+        public string HorarioFuncionamento { get; set; }
+        [Required(ErrorMessage = "O nome da clínica é obrigatório.")]
+
         public string NomeClinica { get; set; }
+        [Required(ErrorMessage = "O nome da clínica é obrigatório.")]
 
-        [Required(ErrorMessage = "A razão social é obrigatória.")]
-        public string RazaoSocial { get; set; }
-
-        [Required(ErrorMessage = "O CNPJ é obrigatório.")]
         public string Cnpj { get; set; }
-
         [Required(ErrorMessage = "O endereço é obrigatório.")]
-        public string Endereco { get; set; }
-
-        [Required(ErrorMessage = "O horário de abertura é obrigatório.")]
-        public TimeSpan? HorarioAber { get; set; }
-
-        [Required(ErrorMessage = "O horário de fechamento é obrigatório.")]
-        public TimeSpan? HorarioFecha { get; set; }
-
+        public virtual ICollection<Consultum> Consulta { get; set; }
         public virtual ICollection<Medico> Medicos { get; set; }
     }
 }
+
+
+
+
+#nullable disable
+

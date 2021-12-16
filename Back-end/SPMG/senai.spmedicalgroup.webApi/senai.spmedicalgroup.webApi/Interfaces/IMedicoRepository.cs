@@ -15,9 +15,6 @@ namespace senai.spmedicalgroup.webApi.Interfaces
         Medico BuscarPorId(int id);
 
         
-        Medico BuscarPorEmail(string email);
-
-        
         void Deletar(int id);
 
         

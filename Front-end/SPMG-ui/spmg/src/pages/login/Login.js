@@ -1,10 +1,7 @@
 import { Component } from 'react'
-import '../login/login.css'
+import '../Login/login.css'
 import axios from 'axios'
 // import { Link } from 'react-router-dom';
-
-
-
 
 import imgMedicos from '../assec/imgMedicos.png'
 import LogoSPMG from '../assec/LogoSPMG.png'
@@ -17,15 +14,46 @@ export default class Login extends Component {
         this.state = {
             email: '',
             senha: '',
-           
+            erroMensagem: '',
+            isLoading: false,
+
         };
     };
 
-  efetuaLogin = (event) =>{
-      event.preventDefault();
+    efetuaLogin = (event) => {
+        event.preventDefault();
 
-      axios.post()
-  }
+        this.setState({ erroMensagem: '', isLoading: true })
+
+        axios.post('http://192.168.6.52:5000/api/Login', {
+            email: this.state.email,
+            senha: this.state.senha
+        })
+
+            .then(resposta => {
+                if (resposta.status === 200) {
+
+                    console.log('Meu Token é:' + resposta.data.token)
+                    localStorage.setItem('usuario-login', resposta.data.token);
+                    this.setState({ isLoading: false })
+                }
+            })
+
+            .catch(() => {
+                this.setState({ erroMensagem: 'E-mail ou senha inválidos! ', isLoading: false })
+
+            })
+
+    };
+
+
+
+
+
+    atualizaStateCampo = (campo) => {
+        this.setState({ [campo.target.name]: campo.target.value })
+    }
+
 
 
     render() {
@@ -37,13 +65,13 @@ export default class Login extends Component {
 
                         <div class="bloco1">
                             <div>
-                                <img class="imgMedicos" src={imgMedicos} />
+                                <img class="imgMedicos" src={imgMedicos} alt="imgmedcos" />
                             </div>
                         </div>
 
                         <div class="bloco2">
                             <div>
-                                <img class="IMGLogo" src={LogoSPMG} />
+                                <img class="IMGLogo" src={LogoSPMG} alt="logospmg" />
                             </div>
 
                             <form onSubmit={this.efetuaLogin}>
@@ -51,7 +79,7 @@ export default class Login extends Component {
                                 <input class="InputNome"
                                     type="text"
                                     name="email"
-                                    value={this.stade.email}
+                                    value={this.state.email}
                                     onChange={this.atualizaStateCampo}
                                     placeholder='Username'
                                 />
@@ -60,19 +88,27 @@ export default class Login extends Component {
                                 <input class="InputNome"
                                     type="password"
                                     name="senha"
-                                    value={this.stade.senha}
+                                    value={this.state.senha}
                                     onChange={this.atualizaStateCampo}
                                     placeholder='password'
                                 />
 
-                                {/* <div>
+                                <p style={{ color: 'red' }}> {this.state.erroMensagem}</p>
 
-                                    <button class="EsqueceuSenha"> Esqueceu a senha? </button>
-                                </div> */}
+                                {this.state.isLoading === true &&
+                                    <button type="submit" disabled>
+                                        Loading...
+                                    </button>
+                                }
 
-                                <button type='submit'>
-                                    Login
-                                </button>
+                                {
+                                    this.state.isLoading === false &&
+                                    <button type='submit' disabled={this.state.email === '' || this.state.senha === '' ?'none' : ''}>
+                                        Login
+                                    </button>
+                                }
+
+
                             </form>
                         </div>
 

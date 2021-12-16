@@ -1,4 +1,4 @@
-﻿using senai.spmedicalgroup.webApi.Contexts;
+﻿using senai.spmedicalgroup.webApi.Context;
 using senai.spmedicalgroup.webApi.Domains;
 using senai.spmedicalgroup.webApi.Interfaces;
 using System;
@@ -10,7 +10,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-        SpMedGroupContext ctx = new SpMedGroupContext();
+        SPMGContext ctx = new SPMGContext();
 
         public void Atualizar(Usuario objAtualizado)
         {
@@ -19,8 +19,8 @@ namespace senai.spmedicalgroup.webApi.Repositories
             if (objBuscado.Email != null)
             {
                 objBuscado.Email = objAtualizado.Email;
-                objBuscado.TipoUsuario = objAtualizado.TipoUsuario;
-                objBuscado.NomeUsuario = objAtualizado.NomeUsuario;
+                objBuscado.IdTipoUsuario = objAtualizado.IdTipoUsuario;
+                objBuscado.Nome = objAtualizado.Nome;
                 objBuscado.Senha = objAtualizado.Senha;
             }
 

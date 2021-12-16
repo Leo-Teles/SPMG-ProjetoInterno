@@ -1,30 +1,30 @@
-﻿using senai.spmedicalgroup.webApi.Contexts;
-using senai.spmedicalgroup.webApi.Domains;
+﻿using senai.spmedicalgroup.webApi.Domains;
 using senai.spmedicalgroup.webApi.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using senai.spmedicalgroup.webApi.Context;
 
 namespace senai.spmedicalgroup.webApi.Repositories
 {
     public class ConsultumRepository : IConsultumRepository
     {
-        SpMedGroupContext ctx = new SpMedGroupContext();
+        SPMGContext ctx = new SPMGContext();
 
         public void Atualizar(int id, Consultum objAtualizado)
         {
             Consultum objBuscado = ctx.Consulta.FirstOrDefault(u => u.IdConsulta == id);
 
-            if (objBuscado.Situacao != null)
+            if (objBuscado.IdSituacao != null)
             {
-                objBuscado.IdMedico     = objAtualizado.IdMedico;
+                objBuscado.IdMedido    = objAtualizado.IdMedido;
                 objBuscado.IdPaciente   = objAtualizado.IdPaciente;
-                objBuscado.Situacao     = objAtualizado.Situacao;
-                objBuscado.Valor        = objAtualizado.Valor;
+                objBuscado.IdSituacao     = objAtualizado.IdSituacao;
+                
                 objBuscado.DataConsulta = objAtualizado.DataConsulta;
-                objBuscado.Descricao    = objAtualizado.Descricao;
+                objBuscado.Descrição   = objAtualizado.Descrição;
             }
 
             ctx.Consulta.Update(objBuscado);
@@ -33,7 +33,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
 
         public Consultum BuscarPorId(int id)
         {
-            return ctx.Consulta.Include(c => c.IdMedicoNavigation).Include(c => c.IdPacienteNavigation).FirstOrDefault(u => u.IdConsulta == id);
+            return ctx.Consulta.Include(c => c.IdMedidoNavigation).Include(c => c.IdPacienteNavigation).FirstOrDefault(u => u.IdConsulta == id);
         }
 
         public void Cadastrar(Consultum objAtualizado)
@@ -50,17 +50,17 @@ namespace senai.spmedicalgroup.webApi.Repositories
 
         public List<Consultum> ListarTodos()
         {
-            return ctx.Consulta.Include(c => c.IdMedicoNavigation).Include(c => c.IdPacienteNavigation).ToList();
+            return ctx.Consulta.Include(c => c.IdMedidoNavigation).Include(c => c.IdPacienteNavigation).ToList();
         }
 
         public List<Consultum> ListarPorMed(int id)
         {
-            return ctx.Consulta.Where(u => u.IdMedico == id).Include(c => c.IdMedicoNavigation).Include(c => c.IdPacienteNavigation).ToList();
+            return ctx.Consulta.Where(u => u.IdMedido == id).Include(c => c.IdMedidoNavigation).Include(c => c.IdPacienteNavigation).ToList();
         }
 
         public List<Consultum> ListarPorPac(int id)
         {
-            return ctx.Consulta.Where(u => u.IdPaciente == id).Include(c => c.IdMedicoNavigation).Include(c => c.IdPacienteNavigation).ToList();
+            return ctx.Consulta.Where(u => u.IdPaciente == id).Include(c => c.IdMedidoNavigation).Include(c => c.IdPacienteNavigation).ToList();
         }
     }
 }

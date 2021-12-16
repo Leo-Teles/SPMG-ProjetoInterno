@@ -12,7 +12,8 @@ namespace senai.spmedicalgroup.webApi.Domains
             Consulta = new HashSet<Consultum>();
         }
 
-        public string Situacao1 { get; set; }
+        public int IdSituacao { get; set; }
+        public string DescricaoSituacao { get; set; }
 
         public virtual ICollection<Consultum> Consulta { get; set; }
     }

@@ -2,6 +2,8 @@ import { Component } from 'react'
 import '../Login/login.css'
 import axios from 'axios'
 // import { Link } from 'react-router-dom';
+import { parseJwt } from '../../services/auth' 
+
 
 import imgMedicos from '../assec/imgMedicos.png'
 import LogoSPMG from '../assec/LogoSPMG.png'
@@ -36,6 +38,15 @@ export default class Login extends Component {
                     console.log('Meu Token é:' + resposta.data.token)
                     localStorage.setItem('usuario-login', resposta.data.token);
                     this.setState({ isLoading: false })
+
+                    let base64 =localStorage.getItem('usuario-login').split('.')[1]
+                    console.log(base64);
+
+                    console.log(window.atob(base64));
+
+                    console.log(JSON.parse(window.atob(base64) ) );
+                    console.log(parseJwt().email);
+
                 }
             })
 
@@ -61,22 +72,22 @@ export default class Login extends Component {
             <div>
 
                 <main>
-                    <section class="todosBlocos">
+                    <section className="todosBlocos">
 
-                        <div class="bloco1">
+                        <div className="bloco1">
                             <div>
-                                <img class="imgMedicos" src={imgMedicos} alt="imgmedcos" />
+                                <img className="imgMedicos" src={imgMedicos} alt="imgmedcos" />
                             </div>
                         </div>
 
-                        <div class="bloco2">
+                        <div className="bloco2">
                             <div>
-                                <img class="IMGLogo" src={LogoSPMG} alt="logospmg" />
+                                <img className="IMGLogo" src={LogoSPMG} alt="logospmg" />
                             </div>
 
                             <form onSubmit={this.efetuaLogin}>
 
-                                <input class="InputNome"
+                                <input className="InputNome"
                                     type="text"
                                     name="email"
                                     value={this.state.email}
@@ -85,7 +96,7 @@ export default class Login extends Component {
                                 />
 
 
-                                <input class="InputNome"
+                                <input className="InputNome"
                                     type="password"
                                     name="senha"
                                     value={this.state.senha}

@@ -8,6 +8,7 @@ import {
   ImageBackground,
   TextInput,
 } from 'react-native';
+import jwtDecode from 'jwt-decode';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -17,37 +18,66 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'administrador@email.com',
-      senha: 'L12345',
+      email: '',
+      senha: '',
+      role: ''
     };
   }
-  //como vamos trabalhar com assync historage,
-  //nossa funcao tem que ser async.
-  realizarLogin = async () => {
-    //nao temos mais  console log.
-    //vamos utilizar console.warn.
 
-    //apenas para teste.
+
+
+  realizarLogin = async () => {
+
     console.warn(this.state.email + ' ' + this.state.senha);
 
-    const resposta = await api.post('/Login', {
-      email: this.state.email,
-      senha: this.state.senha,
-    });
+    try {
+      const resposta = await api.post('/Login', {
+        email: this.state.email,
+        senha: this.state.senha,
+      });
 
-    //mostrar no swagger para montar.
-    const token = resposta.data.token;
-    await AsyncStorage.setItem('userToken', token);
+      console.warn(resposta);
 
-    //agora sim podemos descomentar.
-    if (resposta.status == 200) {
-      this.props.navigation.navigate('Main');
+
+      const token = resposta.data.token;
+      await AsyncStorage.setItem('userToken', token);
+
+      if (resposta.status == 200) {
+        // this.props.navigation.navigate('ConsultaPaciente');
+        this.buscarDadosPerfil();
+      }
+
+      else {
+        console.warn('Email ou senha inválido')
+      }
+
+      console.warn(token);
+
+    } catch (error) {
+      console.warn(error);
     }
-
-    console.warn(token);
-
-    //
   };
+
+  buscarDadosPerfil = async () => {
+    const valorToken = await AsyncStorage.getItem('userToken')
+
+    if (valorToken != null) {
+      this.setState({ email: jwtDecode(valorToken).email });
+      this.setState({ role: jwtDecode(valorToken).role });
+
+      this.tipoUsuario(this.state.role);
+    }
+  }
+
+  tipoUsuario(role) {
+    switch (role) {
+      case '2':
+        return this.props.navigation.navigate('ConsultaMedico');;
+
+      case '3':
+        return this.props.navigation.navigate('ConsultaPaciente');;
+    }
+  }
 
   render() {
     return (
@@ -73,7 +103,6 @@ export default class Login extends Component {
             placeholder="EMAIL"
             placeholderTextColor="000000"
             keyboardType="email-address"
-            // ENVENTO PARA FAZERMOS ALGO ENQUANTO O TEXTO MUDA
             onChangeText={email => this.setState({ email })}
           />
 
@@ -81,9 +110,8 @@ export default class Login extends Component {
             style={styles.inputSenha}
             placeholder="SENHA"
             placeholderTextColor="000000"
-            keyboardType="default" //para default nao obrigatorio.
-            secureTextEntry={true} //proteje a senha.
-            // ENVENTO PARA FAZERMOS ALGO ENQUANTO O TEXTO MUDA
+            keyboardType="default"
+            secureTextEntry={true}
             onChangeText={senha => this.setState({ senha })}
           />
 

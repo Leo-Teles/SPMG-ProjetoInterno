@@ -1,20 +1,54 @@
-// import React, { Component } from 'react';
-// import {
-//     FlatList,
-//     SafeAreaView,
-//     ScrollView,
-//     StatusBar,
-//     StyleSheet,
-//     Text,
-//     ImageBackground,
-//     Image,
-//     TextInput,
-//     TouchableOpacity,
-//     View,
-// } from 'react-native';
+import api from '../services/api';
 
-// import api from '../services/api';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// import Intl from 'intl';
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  TextInput,
+} from 'react-native';
+
+
+export default class ConsultaPaciente extends Component {
+
+  constructor(props) {
+      super(props);
+      this.state = {
+          listaConsultas: [],
+          email: ''
+      };
+  }
+
+
+buscarConsultas = async () => {
  
+  const resposta = await api.get('/ConsultaPaciente');
+  
+  const dadosDaApi = resposta.data;
+  
+  this.setState({listaEventos: dadosDaApi});
+};
+
+componentDidMount(){
+  this.buscarConsultas();
+}
+
+render() {
+  return (
+    <View> 
+      <Text style={styles.Titulo}> Consultas Medico </Text>
+    </View>
+  );
+}
+
+}
+
+
+const styles = StyleSheet.create({
+  Titulo: {}
+
+});
+

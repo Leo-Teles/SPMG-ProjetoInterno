@@ -47,6 +47,15 @@ export default class Login extends Component {
                     console.log(JSON.parse(window.atob(base64) ) );
                     console.log(parseJwt().email);
 
+                    if (parseJwt().role === '1') {
+                        this.props.history.push('/ConsultaAdm')
+                        console.log ('estou logado:' + usuarioAutenticado())
+                    }
+                    else{
+                        this.props.history.push('/')
+                    }
+
+
                 }
             })
 

@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import '../login/login.css'
+import '../Login/login.css'
 import axios from 'axios'
 // import { Link } from 'react-router-dom';
 import { parseJwt } from '../../services/auth' 

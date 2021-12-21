@@ -14,7 +14,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "ADM,MED,PAC")]
+    [Authorize(Roles = "1,2,3")]
     public class MedicosController : ControllerBase
     {
         private IMedicoRepository _Repository { get; set; }

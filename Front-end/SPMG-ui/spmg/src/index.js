@@ -4,9 +4,9 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import './index.css';
 
-import Home from './pages/Home/App';
-import consultaAdm from './pages/ConsultaAdm/consultaAdm';
-import Login from './pages/Login/Login';
+import Home from './pages/home/App';
+import consultaAdm from './pages/consultaadm/ConsultaAdm';
+import Login from './pages/login/Login ';
 
 import reportWebVitals from './reportWebVitals';
 import { parseJwt, usuarioAutenticado } from './services/auth';

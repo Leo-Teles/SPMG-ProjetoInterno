@@ -12,10 +12,7 @@ namespace senai.spmedicalgroup.webApi.Interfaces
         List<Consultum> ListarTodos();
 
         
-        List<Consultum> ListarPorMed(int id);
-
-     
-        List<Consultum> ListarPorPac(int id);
+        List<Consultum> ListarMinhas(int id);
 
        
         Consultum BuscarPorId(int id);

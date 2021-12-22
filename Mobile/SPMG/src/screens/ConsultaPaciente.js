@@ -23,21 +23,33 @@ export default class ConsultaPaciente extends Component {
       listaConsultas: [],
       email: ''
     };
-  }
-
+  };
 
   buscarConsultas = async () => {
+    try {
+      var token = await AsyncStorage.getItem('userToken')
+      var resposta = await api.get('/consultas/minhas', {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      },
+      );
 
-    const resposta = await api.get('/ConsultaPaciente');
 
-    const dadosDaApi = resposta.data;
-
-    this.setState({ listaConsultas: dadosDaApi });
+      if (resposta.status == 200) {
+        const dadosDaApi = resposta.data;
+        console.warn(dadosDaApi)
+        this.setState({ listaConsultas: dadosDaApi });
+      }
+    } catch (error) {
+      console.warn(error);
+    };
   };
 
   componentDidMount() {
     this.buscarConsultas();
   }
+
 
   render() {
     return (
@@ -69,11 +81,12 @@ export default class ConsultaPaciente extends Component {
 
 
   renderItem = ({ item }) => (
-    
+
     <View style={styles.flatItemRow}>
       <View style={styles.flatItemContainer}>
-        <Text style={styles.flatItemTitle}>{item.nomePaciente}</Text>
-        <Text style={styles.flatItemInfo}>{item.descricao}</Text>
+        <Text style={styles.flatItemTitle}>{item.}</Text>
+        <Text style={styles.flatItemTitle}>{item.}</Text>
+        <Text style={styles.flatItemInfo}>{item.}</Text>
       </View>
 
 

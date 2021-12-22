@@ -13,7 +13,7 @@ namespace senai.spmedicalgroup.webApi.Domains
         }
 
         public byte IdPaciente { get; set; }
-        public int? IdUsuario { get; set; }
+        public int IdUsuario { get; set; }
         public string Telefone { get; set; }
         public string DataNascimento { get; set; }
         public string Cpf { get; set; }

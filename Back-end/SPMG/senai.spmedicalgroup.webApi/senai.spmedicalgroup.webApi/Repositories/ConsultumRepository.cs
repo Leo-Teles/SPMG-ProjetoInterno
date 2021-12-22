@@ -53,14 +53,14 @@ namespace senai.spmedicalgroup.webApi.Repositories
             return ctx.Consulta.Include(c => c.IdMedidoNavigation).Include(c => c.IdPacienteNavigation).ToList();
         }
 
-        public List<Consultum> ListarPorMed(int id)
+        public List<Consultum> ListarMinhas(int id)
         {
-            return ctx.Consulta.Where(u => u.IdMedido == id).Include(c => c.IdMedidoNavigation).Include(c => c.IdPacienteNavigation).ToList();
-        }
-
-        public List<Consultum> ListarPorPac(int id)
-        {
-            return ctx.Consulta.Where(u => u.IdPaciente == id).Include(c => c.IdMedidoNavigation).Include(c => c.IdPacienteNavigation).ToList();
+            return ctx.Consulta
+                .Include(c => c.IdMedidoNavigation.IdEspecialidadeNavigation)
+                .Include(c => c.IdPacienteNavigation)
+                .Include(c => c.IdSituacaoNavigation)
+                .Where(c => c.IdMedidoNavigation.IdUsuario == id || c.IdPacienteNavigation.IdUsuario == id)
+                .ToList();
         }
     }
 }

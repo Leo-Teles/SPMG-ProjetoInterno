@@ -15,7 +15,7 @@ namespace senai.spmedicalgroup.webApi.Domains
         public byte IdMedico { get; set; }
         public byte? IdEspecialidade { get; set; }
         public byte? IdClinica { get; set; }
-        public int? IdUsuario { get; set; }
+        public int IdUsuario { get; set; }
         public string Crm { get; set; }
 
         public virtual Clinica IdClinicaNavigation { get; set; }

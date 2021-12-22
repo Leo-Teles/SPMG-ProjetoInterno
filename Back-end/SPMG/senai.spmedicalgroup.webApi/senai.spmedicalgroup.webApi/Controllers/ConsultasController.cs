@@ -6,6 +6,7 @@ using senai.spmedicalgroup.webApi.Interfaces;
 using senai.spmedicalgroup.webApi.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,14 +25,38 @@ namespace senai.spmedicalgroup.webApi.Controllers
         }
 
         
-        [Authorize(Roles = "ADM")]
+        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult LerTudo()
         {
             return Ok(_Repository.ListarTodos());
         }
-        
-        [Authorize(Roles = "ADM,MED")]
+
+        [HttpGet ("minhas")]
+        public IActionResult ListarMinhas()
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                
+
+                return Ok(_Repository.ListarMinhas(idUsuario));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(new
+                {
+                    mensagem = "Não foi possível listar suas suas consultas",
+                    erro = error
+
+                });
+            }
+        }
+
+
+
+        [Authorize(Roles = "1,2")]
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
@@ -39,7 +64,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
         }
 
         
-        [Authorize(Roles = "ADM")]
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Consultum obj)
         {
@@ -48,7 +73,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
         }
 
         
-        [Authorize(Roles = "MED")]
+        [Authorize(Roles = "2")]
         [HttpPut]
         public IActionResult AtualizarDescricao(Consultum obj)
         {
@@ -57,7 +82,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
         }
 
         
-        [Authorize(Roles = "ADM")]
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {

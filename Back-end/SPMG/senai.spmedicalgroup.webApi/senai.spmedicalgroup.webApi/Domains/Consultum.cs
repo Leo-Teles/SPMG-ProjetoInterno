@@ -9,9 +9,9 @@ namespace senai.spmedicalgroup.webApi.Domains
     {
         public short IdConsulta { get; set; }
         public byte? IdClinica { get; set; }
-        public byte? IdMedido { get; set; }
-        public int? IdSituacao { get; set; }
-        public byte? IdPaciente { get; set; }
+        public byte IdMedido { get; set; }
+        public int IdSituacao { get; set; }
+        public byte IdPaciente { get; set; }
         public string DataConsulta { get; set; }
         public string Descrição { get; set; }
 

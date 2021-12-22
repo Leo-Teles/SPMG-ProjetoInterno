@@ -28,7 +28,7 @@ export default class ConsultaPaciente extends Component {
   buscarConsultas = async () => {
     try {
         var token = await AsyncStorage.getItem('userToken')
-        var resposta = await api.get('/api/Medicos', {
+        var resposta = await api.get('/consultas/minhas', {
             headers: {
                 Authorization: 'Bearer ' + token,
             },
@@ -37,7 +37,8 @@ export default class ConsultaPaciente extends Component {
 
 
         if (resposta.status == 200) {
-            const dadosDaApi = resposta.data;
+          const dadosDaApi = resposta.data;
+            console.warn(dadosDaApi)
             this.setState({ listaConsultas: dadosDaApi });
         }
     } catch (error) {
@@ -55,9 +56,9 @@ export default class ConsultaPaciente extends Component {
   //   this.setState({ listaConsultas: dadosDaApi });
   // };
 
-  // componentDidMount() {
-  //   this.buscarConsultas();
-  // }
+  componentDidMount() {
+    this.buscarConsultas();
+  }
 
   render() {
     return (
@@ -72,7 +73,7 @@ export default class ConsultaPaciente extends Component {
           <FlatList
             contentContainerStyle={styles.mainBobyContent}
             data={this.state.listaConsultas}
-            keyExtractor={item => item.idCosulta}
+            keyExtractor={item => item.idConsulta}
             renderItem={this.renderItem}
 
           />
@@ -92,8 +93,9 @@ export default class ConsultaPaciente extends Component {
 
     <View style={styles.flatItemRow}>
       <View style={styles.flatItemContainer}>
-        <Text style={styles.flatItemTitle}>{item.nomePaciente}</Text>
-        <Text style={styles.flatItemInfo}>{item.descricao}</Text>
+        <Text style={styles.flatItemTitle}>{item.idConsulta}</Text>
+        <Text style={styles.flatItemInfo}>{item.idSituacaoNavigation.descricaoSituacao}</Text>
+
       </View>
 
     </View>
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
   },
 
   Titulo: {
-    color: 'Black',
+    color: 'black',
     borderBottomColor: '#009DF5',
     borderBottomWidth: 3,
     width: 215,

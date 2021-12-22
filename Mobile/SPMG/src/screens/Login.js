@@ -36,7 +36,7 @@ export default class Login extends Component {
         senha: this.state.senha,
       });
 
-      console.warn(resposta);
+      // console.warn(resposta);
 
 
       const token = resposta.data.token;
@@ -51,7 +51,7 @@ export default class Login extends Component {
         console.warn('Email ou senha inválido')
       }
 
-      console.warn(token);
+      // console.warn(token);
 
     } catch (error) {
       console.warn(error);
@@ -101,7 +101,7 @@ export default class Login extends Component {
           <TextInput
             style={styles.inputEmail}
             placeholder="EMAIL"
-            placeholderTextColor="000000"
+            // placeholderTextColor="000000"
             keyboardType="email-address"
             onChangeText={email => this.setState({ email })}
           />
@@ -109,7 +109,7 @@ export default class Login extends Component {
           <TextInput
             style={styles.inputSenha}
             placeholder="SENHA"
-            placeholderTextColor="000000"
+            // placeholderTextColor="000000"
             keyboardType="default"
             secureTextEntry={true}
             onChangeText={senha => this.setState({ senha })}

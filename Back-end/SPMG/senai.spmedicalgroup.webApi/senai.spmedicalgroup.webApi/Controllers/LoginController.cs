@@ -38,6 +38,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
 
                 var minhasClaims = new[]
                 {
+                    new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
                     new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString()),
                     new Claim("role", usuarioBuscado.IdTipoUsuario.ToString())

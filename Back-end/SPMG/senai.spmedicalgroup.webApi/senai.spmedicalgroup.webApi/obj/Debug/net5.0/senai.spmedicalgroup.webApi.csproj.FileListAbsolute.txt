@@ -364,7 +364,6 @@ C:\Users\46881551827\Desktop\SPMG-Organizado\Back-end\SPMG\senai.spmedicalgroup.
 C:\Users\46881551827\Desktop\SPMG-Organizado\Back-end\SPMG\senai.spmedicalgroup.webApi\senai.spmedicalgroup.webApi\obj\Debug\net5.0\senai.spmedicalgroup.webApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\46881551827\Desktop\SPMG-Organizado\Back-end\SPMG\senai.spmedicalgroup.webApi\senai.spmedicalgroup.webApi\obj\Debug\net5.0\senai.spmedicalgroup.webApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\46881551827\Desktop\SPMG-Organizado\Back-end\SPMG\senai.spmedicalgroup.webApi\senai.spmedicalgroup.webApi\obj\Debug\net5.0\staticwebassets\senai.spmedicalgroup.webApi.StaticWebAssets.Manifest.cache
-C:\Users\46881551827\Desktop\SPMG-Organizado\Back-end\SPMG\senai.spmedicalgroup.webApi\senai.spmedicalgroup.webApi\obj\Debug\net5.0\staticwebassets\senai.spmedicalgroup.webApi.StaticWebAssets.xml
 C:\Users\46881551827\Desktop\SPMG-Organizado\Back-end\SPMG\senai.spmedicalgroup.webApi\senai.spmedicalgroup.webApi\obj\Debug\net5.0\scopedcss\bundle\senai.spmedicalgroup.webApi.styles.css
 C:\Users\46881551827\Desktop\SPMG-Organizado\Back-end\SPMG\senai.spmedicalgroup.webApi\senai.spmedicalgroup.webApi\obj\Debug\net5.0\senai.spmedicalgroup.webApi.RazorTargetAssemblyInfo.cache
 C:\Users\46881551827\Desktop\SPMG-Organizado\Back-end\SPMG\senai.spmedicalgroup.webApi\senai.spmedicalgroup.webApi\obj\Debug\net5.0\senai.spmedicalgroup.webApi.csproj.CopyComplete

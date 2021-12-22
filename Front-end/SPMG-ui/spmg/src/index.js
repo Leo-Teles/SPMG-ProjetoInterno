@@ -5,7 +5,7 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import './index.css';
 
 import Home from './pages/Home/App';
-import consultaAdm from './pages/ConsultaAdm/consultaAdm';
+import consultaAdm from './pages/ConsultaAdm/ConsultaAdm';
 import Login from './pages/Login/Login';
 
 import reportWebVitals from './reportWebVitals';
